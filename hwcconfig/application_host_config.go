@@ -10,6 +10,7 @@ import (
 )
 
 var globalModules = []map[string]string{
+	{"Name": "DTWSAgent64", "Image": `C:\Program Files (x86)\dynatrace\oneagent\agent\lib64\oneagentloader.dll`, "Precondition": "bitness64"},
 	{"Name": "UriCacheModule", "Image": `%windir%\System32\inetsrv\cachuri.dll`},
 	{"Name": "FileCacheModule", "Image": `%windir%\System32\inetsrv\cachfile.dll`},
 	{"Name": "TokenCacheModule", "Image": `%windir%\System32\inetsrv\cachtokn.dll`},
@@ -191,7 +192,7 @@ const applicationHostConfigTemplate = `<?xml version="1.0" encoding="UTF-8"?>
     <sites>
       <siteDefaults>
         <logFile logFormat="W3C" directory="{{.Config.TempDirectory}}\LogFiles" />
-        <traceFailedRequestsLogging enabled="false" />
+        <traceFailedRequestsLogging enabled="true" directory="{{.Config.TempDirectory}}" maxLogFiles="500" />
       </siteDefaults>
       <applicationDefaults applicationPool="AppPool{{.Config.Port}}" />
       <virtualDirectoryDefaults allowSubDirConfig="true" />
@@ -855,6 +856,7 @@ const applicationHostConfigTemplate = `<?xml version="1.0" encoding="UTF-8"?>
   <system.webServer>
 
     <modules>
+      <add name="DTWSAgent64" lockItem="true" />
       <add name="HttpCacheModule" lockItem="true" />
       <add name="StaticCompressionModule" lockItem="true" />
       <add name="DynamicCompressionModule" lockItem="true" />
