@@ -15,12 +15,11 @@ import (
 	"strconv"
 	"syscall"
 
+	"github.com/Dynatrace-Reinhard-Pilz/hwc/contextpath"
+	"github.com/Dynatrace-Reinhard-Pilz/hwc/hwcconfig"
+	"github.com/Dynatrace-Reinhard-Pilz/hwc/validator"
+	"github.com/Dynatrace-Reinhard-Pilz/hwc/webcore"
 	cfenv "github.com/cloudfoundry-community/go-cfenv"
-
-	"code.cloudfoundry.org/hwc/contextpath"
-	"code.cloudfoundry.org/hwc/hwcconfig"
-	"code.cloudfoundry.org/hwc/validator"
-	"code.cloudfoundry.org/hwc/webcore"
 )
 
 var appRootPath string
